@@ -4,7 +4,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 from app import app
 from functions.function import *
-import math
+
 
 
 app.layout = html.Div([
@@ -63,4 +63,4 @@ def update_share_data(option):
 
 
 if __name__ == '__main__':
-    app.run_server(debug=False, host='0.0.0.0',port=5243)
+    app.run_server(debug=False, host='0.0.0.0',port=5000)
