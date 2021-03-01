@@ -25,7 +25,7 @@ def index_layout():
                 ],
                 className="mb-3"),
             ],width=6),
-            ]),
+            ], justify="center"),
             dbc.Row([
                 dash_table.DataTable(
                     id='main_table',
@@ -50,8 +50,8 @@ def display_page(pathname):
         
 
 @app.callback(
-    [Output('table_shares', 'columns'),
-    Output('table_shares', 'data')],
+    [Output('main_table', 'columns'),
+    Output('main_table', 'data')],
     [Input('main_drop', 'value')])
 def update_share_data(option):
     df = pd.DataFrame()
