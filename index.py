@@ -56,7 +56,7 @@ def display_page(pathname):
 def update_share_data(option):
     df = pd.DataFrame()
     if option == "FCAS_score":
-        df = get_FCAS_score()
+        #df = get_FCAS_score()
     col = [{"name": str(i), "id": str(i)} for i in df.columns]
     print(df)
     return col, df.to_dict('records')
