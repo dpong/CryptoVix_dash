@@ -18,5 +18,7 @@ def get_FCAS_score():
     cursor = collect.find({})
     data = list(cursor)
     df = pd.DataFrame(data)
+    df = df[['asset_name', 'symbol', 'metric_slug', 'value', 'grade']]
+    df = df.sort_values(by=['value'], ascending=False)
     return df
 
