@@ -21,7 +21,7 @@ def index_layout():
                 dbc.Col([
                 dbc.InputGroup(
                 [
-                    dbc.Select(id='main_drop', options=[{'label': 'FCAS 分數', 'value': 'FCAS_score'}], value='FCAS_score'),
+                    dbc.Select(id='main_drop', options=[{'label': 'Ranking', 'value': 'Ranking'}], value='Ranking'),
                 ],
                 className="mb-3"),
             ],width=6),
@@ -54,9 +54,11 @@ def display_page(pathname):
     Output('main_table', 'data')],
     [Input('main_drop', 'value')])
 def update_share_data(option):
+    limited = 1000
     df = pd.DataFrame()
-    if option == "FCAS_score":
-        df = get_FCAS_score()
+    if option == "Ranking":
+        fcas = get_FCAS_score(limited)
+        fcas.drop_duplicates('symbol', 'first', inplace=True)
     col = [{"name": str(i), "id": str(i)} for i in df.columns]
     return col, df.to_dict('records')
 

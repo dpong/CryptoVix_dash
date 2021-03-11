@@ -12,13 +12,14 @@ from bson import ObjectId
 mongo = Mongo()
 
 
-def get_FCAS_score():
+def get_FCAS_score(limited):
     db = mongo.client['crypto_information']
     collect = db['FCAS_score']
-    cursor = collect.find({})
+    cursor = collect.find({}).sort('time',-1).limit(limited)
     data = list(cursor)
     df = pd.DataFrame(data)
-    df = df[['asset_name', 'symbol', 'metric_slug', 'value', 'grade']]
+    df = df[['symbol', 'value', 'grade']]
     df = df.sort_values(by=['value'], ascending=False)
+    df = df.reset_index(drop=True)
     return df
 
