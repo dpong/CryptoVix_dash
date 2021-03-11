@@ -58,7 +58,14 @@ def update_share_data(option):
     df = pd.DataFrame()
     if option == "Ranking":
         fcas = get_FCAS_score(limited)
+        simetri = get_Simetri_score(limited)
+        insight = get_token_insight_score(limited)
         fcas.drop_duplicates('symbol', 'first', inplace=True)
+        df['name'] = fcas['asset_name']
+        df['symbol'] = fcas['symbol']
+        fcas = fcas.merge(simetri, left_on='asset_name', right_on='Coin Name')
+        fcas = fcas.merge(insight, left_on='symbol', right_on='symbol')
+        
     col = [{"name": str(i), "id": str(i)} for i in fcas.columns]
     return col, fcas.to_dict('records')
 
