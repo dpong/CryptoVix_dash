@@ -69,8 +69,8 @@ def update_share_data(option):
         df['Simetri'] = fcas['Current']
         df['Token Insight'] = fcas['ratinga']
         df = df[['symbol', 'name', 'FCAS', 'Simetri', 'Token Insight']]
-    col = [{"name": str(i), "id": str(i)} for i in fcas.columns]
-    return col, fcas.to_dict('records')
+    col = [{"name": str(i), "id": str(i)} for i in df.columns]
+    return col, df.to_dict('records')
 
 
 if __name__ == '__main__':
