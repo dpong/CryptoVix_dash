@@ -92,7 +92,7 @@ def update_share_data(option):
         df['name'] = fcas['asset_name']
         fcas = fcas.merge(simetri, left_on='asset_name', right_on='Coin Name')
         fcas = fcas.merge(insight, left_on='symbol', right_on='symbol')
-        print(fcas.tail(10))
+        print(len(fcas))
         df['FCAS'] = fcas['grade']
         df['Simetri'] = fcas['Current']
         df['Token Insight'] = fcas['ratinga']
