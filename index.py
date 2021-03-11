@@ -30,7 +30,7 @@ def index_layout():
                 dash_table.DataTable(
                     id='main_table',
                     page_current=0,
-                    page_size=10,
+                    page_size=100,
                     page_action='custom',
                     sort_action='custom',
                     sort_mode='single',
