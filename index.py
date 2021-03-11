@@ -59,8 +59,8 @@ def update_share_data(option):
     if option == "Ranking":
         fcas = get_FCAS_score(limited)
         fcas.drop_duplicates('symbol', 'first', inplace=True)
-    col = [{"name": str(i), "id": str(i)} for i in df.columns]
-    return col, df.to_dict('records')
+    col = [{"name": str(i), "id": str(i)} for i in fcas.columns]
+    return col, fcas.to_dict('records')
 
 
 if __name__ == '__main__':
