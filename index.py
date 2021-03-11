@@ -61,11 +61,14 @@ def update_share_data(option):
         simetri = get_Simetri_score(limited)
         insight = get_token_insight_score(limited)
         fcas.drop_duplicates('symbol', 'first', inplace=True)
-        df['name'] = fcas['asset_name']
         df['symbol'] = fcas['symbol']
+        df['name'] = fcas['asset_name']
         fcas = fcas.merge(simetri, left_on='asset_name', right_on='Coin Name')
         fcas = fcas.merge(insight, left_on='symbol', right_on='symbol')
-        
+        df['FCAS'] = fcas['grade']
+        df['Simetri'] = fcas['Current']
+        df['Token Insight'] = fcas['ratinga']
+        df = df[['symbol', 'name', 'FCAS', 'Simetri', 'Token Insight']]
     col = [{"name": str(i), "id": str(i)} for i in fcas.columns]
     return col, fcas.to_dict('records')
 
