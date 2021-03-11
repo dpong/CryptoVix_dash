@@ -38,6 +38,6 @@ def get_token_insight_score(limited):
     cursor = collect.find({}).sort('time',-1).limit(limited)
     data = list(cursor)
     df = pd.DataFrame(data)
-    df = df[['symbol', 'rating', 'score']]
+    df = df[['symbol', 'ratinga', 'score']]
     return df
 
